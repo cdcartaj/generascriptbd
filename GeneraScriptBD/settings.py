@@ -26,8 +26,11 @@ SECRET_KEY = 'django-insecure-8^@(-l-=8pm9*a&k5+i)8o=t762@s!se%vj!kob908=(krp3zx
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
 
+#Permitir Render en ALLOWED_HOSTS
+#ALLOWED_HOSTS = []
+#ALLOWED_HOSTS = ['.onrender.com']
+ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', 'localhost').split(',')
 
 # Application definition
 
@@ -144,3 +147,9 @@ LOGGING = {
 #Configuraciones para poner deployar en producción.
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+#Lee SECRET_KEY desde variable de entorno.
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'inseguro-para-dev')
+
+#Poner DEBUG en falso en producción.
+DEBUG = os.environ.get('DEBUG') == 'True'
