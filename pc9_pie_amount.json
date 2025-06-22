@@ -1,0 +1,13 @@
+{
+    "SKU":"EQUIP_SKU",
+    "Offer Rank":"OFFER_RANK",
+    "OrderType":"ORDER_TYPE",
+    "Origen PI":"ORIGINAL_TYPE",
+    "Equipment Commitment":"EQUIP_COMMIT",
+    "Sales Channel":"SALE_CHANNEL",
+    "EFFECTIVE DATE":"EFFECTIVE_DATE",
+    "EXPIRATION DATE":"EXPIRATION_DATE",
+    "EQUIPMENT_RANK":"EQUIP_RANK",
+    "EQUIPMENT_CLASSIFICATION":"EQUIP_CLASS",
+    "PVP s/IVA":"PIE_AMOUNT" 
+}

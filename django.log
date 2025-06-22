@@ -1,0 +1,3 @@
+INFO 2025-06-19 15:49:00,152 autoreload 5416 21320 Watching for file changes with StatReloader
+INFO 2025-06-19 15:58:42,107 autoreload 19884 4136 Watching for file changes with StatReloader
+INFO 2025-06-19 16:06:47,703 autoreload 19884 4136 D:\Desarrollos\GeneraScriptBD\GeneraScriptBD\settings.py changed, reloading.

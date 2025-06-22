@@ -1,0 +1,27 @@
+{% extends 'procesador/base.html' %}
+{% block title %}Subir Archivo{% endblock %}
+{% block content %}
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Procesar archivo (Excel o CSV) - Descargar SQL</h4>
+        </div>
+        <div class="card-body">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <div class="mb-3">
+                    <label for="tabla" class="form-label">Nombre de la tabla SQL</label>
+                    <input type="text" class="form-control" name="tabla" id="tabla" 
+                            placeholder="pc9_pie_amount" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="archivo" class="form-label">Selecciona el archivo (.xlsx o .csv)</label>
+                    <input type="file" class="form-control" name="archivo" id="archivo" accept=".xlsx,.csv" required>
+                </div>
+
+                <button type="submit" class="btn btn-success">Procesar archivo</button>
+            </form>
+        </div>
+    </div>
+{% endblock content %}

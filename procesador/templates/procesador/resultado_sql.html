@@ -1,0 +1,51 @@
+{% extends 'procesador/base.html' %}
+{% block title %}Subir Archivo{% endblock %}
+{% block content %}
+    <div class="card shadow">
+        <div class="card-header bg-success text-white">
+            <h4 class="mb-0">SQL generado para la tabla <strong>{{ nombre_tabla }}</strong></h4>
+        </div>
+        <div class="card-body">
+            <div class="mb-3">
+                <label for="sql_generado" class="form-label">Código SQL</label>
+                <textarea id="sql_generado" class="form-control" rows="15" readonly>{{ sql_generado }}</textarea>
+            </div>
+
+            <form method="post" action="{% url 'generar_pc9_pie_amount_descarga' %}">
+                {% csrf_token %}
+                <input type="hidden" name="contenido_sql" value="{{ sql_generado|escape }}">
+                <input type="hidden" name="nombre_tabla" value="{{ nombre_tabla }}">
+                <button onclick="descargarSQL()" class="btn btn-success col-md">
+                    <i class="bi bi-download"></i>
+                    Descargar archivo .sql
+                </button>
+                <button onclick="copiarSQL()" class="btn btn-primary col-md">
+                    <i class="bi bi-clipboard2-check"></i>
+                    Copiar al portapapeles
+                </button>
+                <a href="{% url 'index' %}" class="btn btn-secondary mt-3 col-md-12">
+                    <i class="bi bi-arrow-left-circle"></i>
+                    Volver
+                </a>
+            </form>
+        </div>
+    </div>
+{% endblock content %}
+<script>
+    function copiarSQL() {
+        //const textarea = document.querySelector('textarea');
+        const textarea = document.getElementById('sql_generado');
+        textarea.select();
+        document.execCommand('copy');
+        alert('SQL copiado al portapapeles');
+    }
+
+    function descargarSQL() {
+        const texto = document.getElementById('sql_generado').value;
+        const blob = new Blob([texto], { type: 'text/sql' });
+        const enlace = document.createElement('a');
+        enlace.href = URL.createObjectURL(blob);
+        enlace.download = 'inserts_{{ nombre_tabla }}.sql';
+        enlace.click();
+    }
+</script>in
